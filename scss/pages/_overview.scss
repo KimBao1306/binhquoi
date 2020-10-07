@@ -1,0 +1,126 @@
+.overview {
+	.box-wrap.reverse .box-content:first-of-type {
+		padding-left: 70px;
+		padding-right: 0px;
+	}
+	.box-content {
+		padding: 0;
+		background-image: none;
+		&:first-child {
+			width: calc(100% - 700px);
+			padding-right: 70px;
+			@include flex(column, center, flex-start);
+		}
+		&:last-child {
+			width: 700px;
+			max-width: 100%;
+		}
+		.main-title {
+			margin-bottom: 10px;
+		}
+		.sub-title {
+			margin-bottom: 30px;
+			font-weight: bold;
+		}
+		p {
+			color: $black-cl;
+			margin-bottom: 25px;
+			max-height: 120px;
+			overflow-y: auto;
+			@include custom-scrollbar(5px, $second-cl);
+			&.mb-0 {
+				margin-bottom: 0;
+			}
+		}
+		.btn {
+			position: relative;
+			color: $main-cl;
+			font-weight: bold;
+			padding: 0 0 3px;
+			&:before {
+				content: '';
+				position: absolute;
+				bottom: 0px;
+				left: 0;
+				width: 100%;
+				height: 2px;
+				background: $main-cl;
+			}
+		}
+	}
+	@include max-width(768px) {
+		.box-wrap.reverse .box-content,
+		.box-wrap .box-content {
+			width: 100%;
+			padding-right: 0 !important;
+			padding-left: 0 !important;
+		}
+	}
+}
+
+.overview-detail {
+	.heading {
+		max-width: 570px;
+		margin: 0 auto 40px;
+		.main-title {
+			text-transform: uppercase;
+			@include lh(43, 36);
+		}
+		ul li {
+			font-size: 16px;
+			margin-bottom: 10px;
+			@include lh(19, 16);
+		}
+		@include max-width(768px) {
+			margin-bottom: 20px;
+		}
+	}
+	//chia box-content của box-container ở giữa
+	.box-container:nth-of-type(3) .box-content {
+		width: 50%;
+		@include max-width(768px) {
+			width: 100%;
+		}
+	}
+	//ul trong box-content
+	.box-content:first-of-type {
+		> ul {
+			margin-bottom: -15px;
+			> li {
+				position: relative;
+				list-style-type: none;
+				text-indent: 15px;
+				margin-bottom: 5px;
+				&:before {
+					content: '-';
+					position: absolute;
+					top: 0;
+					left: -15px;
+					height: inherit;
+					font-weight: bold;
+				}
+				> ul {
+					margin-left: 20px;
+				}
+			}
+		}
+	}
+	.open-time {
+		width: calc(100% / 12 * 4);
+		margin: 100px auto 0;
+		li:not(.main-title) {
+			margin-bottom: 20px;
+			font-size: 16px;
+			@include flex(row, flex-start, center);
+		}
+		img {
+			margin-right: 15px;
+		}
+	}
+
+	@include max-width(768px) {
+		ul {
+			margin-bottom: 0;
+		}
+	}
+}

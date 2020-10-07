@@ -1,0 +1,134 @@
+.restaurant {
+	&__video {
+		margin-bottom: 100px;
+		cursor: pointer;
+	}
+	.heading {
+		max-width: calc(100% / 12 * 8);
+		margin: 0 auto 100px;
+
+		.desc {
+			@include lh(20, 14);
+		}
+	}
+	&__location {
+		.col {
+			width: 50%;
+			margin-bottom: 70px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+			> div {
+				position: relative;
+				&::after {
+					content: '';
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background-color: rgba($color: $black-cl, $alpha: 0.4);
+				}
+			}
+		}
+		.content {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			z-index: 1;
+			padding: 50px;
+			.main-title {
+				&:hover a {
+					color: $second-cl;
+				}
+			}
+			> a {
+				position: relative;
+				width: fit-content;
+				color: $white-cl;
+				font-size: 14px;
+				line-height: 1.2;
+				@include transition($t1);
+				&:hover {
+					color: $second-cl;
+					&::after {
+						background: $second-cl;
+					}
+				}
+				&::after {
+					content: '';
+					position: absolute;
+					width: 100%;
+					height: 2px;
+					bottom: -5px;
+					left: 0;
+					background: $white-cl;
+					@include transition($t1);
+				}
+			}
+		}
+	}
+
+	@include max-width(768px) {
+		&__video,
+		.heading {
+			margin-bottom: 40px;
+		}
+		.content {
+			padding: 25px;
+			margin-bottom: 0;
+		}
+		&__location {
+			.col {
+				width: 50%;
+				margin-bottom: 0;
+			}
+			.content {
+				padding: 25px;
+			}
+		}
+	}
+	@include max-width(600px) {
+		.heading {
+			max-width: 100%;
+		}
+		.col {
+			width: 100%;
+		}
+	}
+
+	&-detail {
+		.box-content:first-child {
+			padding-top: 120px;
+			padding-bottom: 120px;
+			width: calc(100% / 12 * 4);
+			background-image: url('../images/res-detail.jpg');
+		}
+		.box-content:last-child {
+			width: calc(100% / 12 * 8);
+			.swiper-button-wrap {
+				.swiper-button-prev {
+					background-color: $main-cl;
+				}
+				.swiper-button-next {
+					background-color: $second-cl;
+				}
+			}
+		}
+		hr {
+			background-color: $white-cl;
+		}
+		ul li {
+			font-size: 14px;
+			color: $white-cl;
+			list-style-type: decimal;
+			list-style-position: inside;
+			@include lh(20, 14);
+		}
+
+		.btn {
+			color: $white-cl;
+		}
+	}
+}

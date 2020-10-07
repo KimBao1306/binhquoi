@@ -1,0 +1,31 @@
+/* LIBRARIES */
+//FONT AWESOME
+@import url('../js/Font-awesome-4.7.0/css/font-awesome.min.css');
+//SWIPER
+@import url('../js/swiper-5.4.3/package/css/swiper.min.css');
+//LIGHTGALLERY
+@import url('../js/lightgallery.js-master/dist/css/lightgallery.min.css');
+//MAGNIFICPOPUP
+@import url('../js/Magnific-Popup-master/magnific-popup.css');
+
+/* Core variables and mixins - structure from NghiaTran */
+@import './core/reset';
+@import './core/variables';
+@import './core/mixins';
+@import './core/layouts';
+@import './core/elements';
+@import './core/animation';
+@import './core/header';
+@import './core/footer';
+@import './core/customSwiper';
+// @import './bootstrap_mini-2';
+
+/* Pages */
+@import './pages/home';
+@import './pages/contact';
+@import './pages/library';
+@import './pages/services';
+@import './pages/cafe';
+@import './pages/restaurent';
+@import './pages/resort';
+@import './pages/overview';

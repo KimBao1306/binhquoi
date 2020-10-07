@@ -1,0 +1,273 @@
+// MIXINS
+@mixin max-width($args) {
+	@media screen and (max-width: $args) {
+		@content;
+	}
+}
+@mixin min-width($args) {
+	@media screen and (min-width: $args) {
+		@content;
+	}
+}
+/* IE 10+ */
+@mixin ie {
+	@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+		@content;
+	}
+}
+@mixin animation($str) {
+	-webkit-animation: #{$str};
+	-moz-animation: #{$str};
+	-ms-animation: #{$str};
+	-o-animation: #{$str};
+	animation: #{$str};
+}
+@mixin keyframes($animation-name) {
+	@-webkit-keyframes #{$animation-name} {
+		@content;
+	}
+	@-moz-keyframes #{$animation-name} {
+		@content;
+	}
+	@-ms-keyframes #{$animation-name} {
+		@content;
+	}
+	@-o-keyframes #{$animation-name} {
+		@content;
+	}
+	@keyframes #{$animation-name} {
+		@content;
+	}
+}
+@mixin transform($args...) {
+	transform: $args;
+	-webkit-transform: $args;
+	-o-transform: $args;
+}
+@mixin transform-origin($args) {
+	transform-origin: $args;
+	-webkit-transform-origin: $args;
+	-o-transform-origin: $args;
+}
+@mixin transition-delay($args) {
+	transition-delay: $args;
+	-webkit-transition-delay: $args;
+	-o-transition-delay: $args;
+}
+@mixin transition($args...) {
+	transition: $args;
+	-webkit-transition: $args;
+	-o-transition: $args;
+}
+@mixin br($radius) {
+	border-radius: $radius;
+	background-clip: padding-box; /* stops bg color from leaking outside the border: */
+}
+@mixin text(
+	$font-size,
+	$color,
+	$font-family,
+	$font-weight: normal,
+	$text-transform: none
+) {
+	font-size: $font-size;
+	font-weight: $font-weight;
+	font-family: $font-family;
+	color: $color;
+	text-transform: $text-transform;
+}
+@mixin flex($dir: row, $justify: flex-start, $align: stretch, $wrap: nowrap) {
+	display: flex;
+	align-items: $align;
+	justify-content: $justify;
+	flex-wrap: $wrap;
+	flex-direction: $dir;
+}
+@mixin mid() {
+	top: 50%;
+	left: 50%;
+	@include transform(translate(-50%, -50%));
+	position: absolute;
+}
+@mixin mid-flex() {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-ms-align-items: center;
+	align-items: center;
+	-webkit-align-items: center;
+	justify-content: center;
+	-webkit-justify-content: center;
+}
+@mixin fullpage() {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+@mixin full-fixed() {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+@mixin hidden() {
+	opacity: 0;
+	visibility: hidden;
+}
+@mixin visible() {
+	opacity: 1;
+	visibility: visible;
+}
+@mixin overtext($args) {
+	display: -webkit-inline-box;
+	-webkit-line-clamp: $args;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+@mixin text-truncate {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+@mixin lh($lh, $fsz) {
+	line-height: ($lh / $fsz);
+}
+//calc to tracking in psd => letter spacing to css
+@mixin tracking($tracking) {
+	letter-spacing: ($tracking / 1000) * 1em;
+}
+//calc to leading in psd => line height to css
+@mixin leading($fsz, $leading) {
+	line-height: ($fsz + ($leading / 2)) / 10 * 1rem;
+}
+@mixin offset($col: 0) {
+	margin-left: (100% / 12 * $col);
+}
+@mixin col($col: 0) {
+	width: (100% / 12 * $col);
+}
+@mixin clear-fix {
+	&::after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+}
+/* Custom scrollbar*/
+@mixin custom-scrollbar($width: 3px, $thumb: $main-cl, $track: $white-cl) {
+	&::-webkit-scrollbar {
+		width: $width;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: $thumb;
+	}
+	&::-webkit-scrollbar-track {
+		background: $track;
+	}
+}
+
+
+/*FONT SIZE*/
+@mixin fz-65 {
+	font-size: 65px;
+	line-height: 1.2;
+	@include max-width(1024px) {
+		font-size: 55px;
+	}
+	@include max-width(768px) {
+		font-size: 35px;
+	}
+	@include max-width(500px) {
+		font-size: 30px;
+	}
+}
+@mixin fz-60 {
+	font-size: 60px;
+	line-height: 1.2;
+	@include max-width(1024px) {
+		font-size: 50px;
+	}
+	@include max-width(768px) {
+		font-size: 40px;
+	}
+	@include max-width(500px) {
+		font-size: 36px;
+	}
+}
+@mixin fz-50 {
+	font-size: 50px;
+	line-height: 1.2;
+	@include max-width(1024px) {
+		font-size: 42px;
+	}
+	// @include max-width(768px) {
+	// 	font-size: 38px;
+	// }
+	@include max-width(768px) {
+		font-size: 32px;
+	}
+}
+@mixin fz-48 {
+	font-size: 48px;
+	line-height: 1.2;
+	@include max-width(1024px) {
+		font-size: 42px;
+	}
+	@include max-width(768px) {
+		font-size: 38px;
+	}
+	@include max-width(768px) {
+		font-size: 32px;
+	}
+}
+@mixin fz-36 {
+	font-size: 36px;
+	line-height: 1.3;
+	@include max-width(768px) {
+		font-size: 28px;
+	}
+	@include max-width(500px) {
+		font-size: 26px;
+	}
+}
+@mixin fz-30 {
+	font-size: 30px;
+	line-height: 1.3;
+	@include max-width(768px) {
+		font-size: 26px;
+	}
+	@include max-width(500px) {
+		font-size: 22px;
+	}
+}
+@mixin fz-28 {
+	font-size: 28px;
+	line-height: 1.3;
+	@include max-width(768px) {
+		font-size: 24px;
+	}
+}
+@mixin fz-24 {
+	font-size: 24px;
+	@include max-width(768px) {
+		font-size: 22px;
+	}
+}
+@mixin fz-22 {
+	font-size: 22px;
+	@include max-width(768px) {
+		font-size: 20px;
+	}
+}
+@mixin fz-20 {
+	font-size: 20px;
+	@include max-width(768px) {
+		font-size: 18px;
+	}
+}
+/*FONT SIZE - END*/

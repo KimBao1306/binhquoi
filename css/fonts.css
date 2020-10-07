@@ -1,0 +1,15 @@
+@font-face {
+	font-family: Rbr;
+	src: url('../fonts/Roboto-Regular.ttf');
+	font-display: fallback;
+}
+@font-face {
+	font-family: Rbm;
+	src: url('../fonts/Roboto-Medium.ttf');
+	font-display: fallback;
+}
+@font-face {
+	font-family: Rbb;
+	src: url('../fonts/Roboto-Bold.ttf');
+	font-display: fallback;
+}

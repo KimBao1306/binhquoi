@@ -1,0 +1,47 @@
+.resort {
+	.container .box-container:nth-child(even) {
+		hr {
+			background-color: $second-cl;
+		}
+		.btn {
+			width: fit-content;
+			right: 100%;
+			@include transform(translateX(100%));
+		}
+	}
+
+	.box-content {
+		background-color: rgba($color: $main-cl, $alpha: 0.05);
+		background-image: none;
+		&:first-child {
+			padding-left: 70px;
+			padding-right: 70px;
+		}
+		hr {
+			background-color: $main-cl;
+		}
+		p {
+			color: $black-cl;
+			&[class] {
+				font-weight: bold;
+			}
+		}
+		ul li:not(:last-child) {
+			margin-bottom: 10px;
+		}
+		.btn {
+			color: $white-cl;
+			&:hover {
+				&::after {
+					background-color: $main-cl;
+				}
+			}
+		}
+		@include max-width(768px) {
+			&:first-child {
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+		}
+	}
+}

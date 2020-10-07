@@ -1,0 +1,27 @@
+.cafe {
+	.box-container {
+		margin-bottom: 100px;
+	}
+	.col {
+		width: 50%;
+		@include flex(row, flex-start, flex-start);
+	}
+	.content {
+		margin-left: 20px;
+		margin-bottom: -15px;
+		p {
+			font-size: 14px;
+			line-height: 1.2;
+			margin-bottom: 15px;
+		}
+		span {
+			font-weight: bold;
+		}
+	}
+
+	@include max-width(600px) {
+		.col {
+			width: 100%;
+		}
+	}
+}

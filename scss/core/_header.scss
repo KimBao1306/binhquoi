@@ -1,0 +1,208 @@
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 120px;
+	background-color: $white-cl;
+	z-index: 900;
+	@include transition($t2);
+
+	&__inner {
+		height: inherit;
+		position: relative;
+	}
+	.container {
+		height: inherit;
+		@include flex(row, center, center);
+		padding: 18px 15px;
+	}
+	/* header list */
+	&__list {
+		@include flex(row, center, center);
+		> li {
+			//chỉ hover trên laptop
+			@include min-width(1024px) {
+				&:hover {
+					> a {
+						color: $second-cl;
+						&::after,
+						&::before {
+							color: $second-cl;
+							@include visible;
+						}
+						&::before {
+							@include transform(translate(-50%, 10px));
+						}
+						&::after {
+							@include transform(translate(-50%, -10px));
+						}
+					}
+				}
+			}
+			&.--active {
+				> a {
+					color: $second-cl;
+				}
+			}
+		}
+
+		> li > a {
+			padding: 20px;
+			position: relative;
+			color: #3a5975;
+			font-size: 14px;
+			font-weight: bold;
+			text-transform: uppercase;
+			@include transition($t1);
+			@include leading(14, 17);
+			@include flex(row, space-between, center);
+			&::after,
+			&::before {
+				content: '';
+				position: absolute;
+				left: 50%;
+				width: 80%;
+				height: 2px;
+				background: $second-cl;
+				@include hidden;
+				@include transform(translateX(-50%));
+				@include transition($t1);
+			}
+			&::before {
+				top: 0;
+			}
+			&::after {
+				bottom: 0;
+			}
+		}
+	}
+
+	.dropdown {
+		position: relative;
+		//hover in desktop
+		@include min-width(1024px) {
+			&:hover {
+				> .sub-menu {
+					display: block;
+				}
+			}
+		}
+		a {
+			font-size: 14px;
+			font-weight: bold;
+			text-transform: uppercase;
+			@include transition($t1);
+			@include flex(row, space-between, center);
+		}
+		.fa.fa-angle-down {
+			width: 20px;
+			height: 20px;
+			@include mid-flex;
+		}
+	}
+	.sub-menu {
+		position: absolute;
+		display: none;
+		left: 0;
+		top: 100%;
+		width: 100%;
+		background: $main-cl;
+		a {
+			color: $second-cl;
+			padding: 15px;
+			@include min-width(1024px) {
+				&:hover {
+					color: $main-cl;
+					background-color: $second-cl;
+				}
+			}
+		}
+		.sub-menu {
+			top: 0;
+			left: 100%;
+		}
+	}
+
+	@include max-width(992px) {
+		//header list in mobile
+		&__list {
+			position: fixed;
+			top: 0;
+			right: 0;
+			height: 100%;
+			width: 250px;
+			padding-top: 50px;
+			z-index: 903;
+			background-color: $main-cl;
+			justify-content: flex-start;
+			align-items: flex-start;
+			flex-direction: column;
+			overflow-y: auto;
+			overflow-x: hidden;
+			@include transform(translateX(100%));
+			@include transition(transform $t1);
+			@include custom-scrollbar;
+			li {
+				width: 100%;
+				a {
+					color: $white-cl;
+					padding: 15px;
+					border-bottom: 2px solid $white-cl;
+				}
+			}
+
+			&.--active {
+				@include transform(translateX(0));
+			}
+			a {
+				padding-left: 45px;
+				color: $white-cl;
+			}
+		}
+
+		.sub-menu {
+			position: relative;
+			display: none;
+			left: 0 !important;
+			top: 0 !important;
+			a {
+				padding-left: 30px;
+				color: $white-cl;
+			}
+		}
+	}
+	/* header list */
+
+	&__mobile {
+		display: none;
+		.hamburger-btn {
+			margin-left: auto;
+		}
+	}
+	//menu scroll
+	&.--fixed {
+		height: 80px;
+		@include animation(fixedMenu $t2);
+		.logo {
+			width: 44px;
+			height: 44px;
+		}
+	}
+
+	@include max-width(1024px) {
+		.container {
+			justify-content: space-between;
+		}
+	}
+
+	@include max-width(992px) {
+		& {
+			height: 100px;
+		}
+
+		&__mobile {
+			display: block;
+		}
+	}
+}

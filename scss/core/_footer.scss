@@ -1,0 +1,99 @@
+.footer {
+	background-color: $main-cl;
+	.col {
+		color: $white-cl;
+		width: calc(100% / 3);
+		font-size: 14px;
+		@include lh(24, 14);
+	}
+	img {
+		object-fit: cover;
+		width: 100%;
+		height: auto;
+		margin-bottom: 70px;
+	}
+	.top {
+		.col:last-child {
+			@include flex(column);
+		}
+		span {
+			display: inline-block;
+			font-weight: bold;
+			color: $second-cl;
+			margin-bottom: auto;
+		}
+	}
+	.bottom {
+		text-transform: uppercase;
+		ul:not(:last-child) {
+			margin-bottom: 30px;
+		}
+		span {
+			display: block;
+			font-size: 18px;
+			font-weight: bold;
+			margin-bottom: 30px;
+		}
+		strong {
+			font-weight: bold;
+			text-transform: capitalize;
+		}
+		a {
+			text-transform: uppercase;
+			color: $white-cl;
+			@include transition($t1);
+			&:hover {
+				color: $second-cl;
+			}
+		}
+		.col:last-child {
+			width: calc(100% / 3 * 2);
+		}
+		.split {
+			@include flex(row);
+			> * {
+				width: 50%;
+			}
+		}
+	}
+	@include max-width(768px) {
+		.col {
+			width: 50%;
+		}
+		.top {
+			.col:first-child {
+				display: none;
+			}
+		}
+		.bottom {
+			.col:last-child {
+				width: 50%;
+			}
+			.split {
+				flex-direction: column;
+				> * {
+					width: 100%;
+				}
+			}
+		}
+	}
+	@include max-width(600px) {
+		.cols {
+			flex-direction: column;
+		}
+		.col {
+			width: 100%;
+		}
+		img {
+			margin-bottom: 30px;
+		}
+		.bottom {
+			span {
+				margin-bottom: 10px;
+			}
+			.col:last-child {
+				width: 100%;
+			}
+		}
+	}
+}
